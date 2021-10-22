@@ -1,5 +1,4 @@
 import Header from './components/Header/Header';
-import GlobalStyles from './globalStyles/global-styles';
 import { ThemeProvider } from 'styled-components';
 import { useState } from 'react';
 import { DarkTheme, BaseTheme, Container } from './globalStyles/styles.app';
@@ -10,7 +9,6 @@ const App: React.FC = () => {
 
   return (
     <ThemeProvider theme={isDarkTheme ? DarkTheme : BaseTheme}>
-      <GlobalStyles />
       <div className='App'>
         <Container>
           <Header isDarkTheme={isDarkTheme} setTheme={setIsDarkTheme} />
