@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const BaseTheme = {
   name: 'BaseTheme',
   color: '#0F0F15',
-  background: '#fff',
+  background: '#f8f8f8 ',
 };
 
 export const DarkTheme = {

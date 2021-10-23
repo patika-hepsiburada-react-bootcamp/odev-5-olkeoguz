@@ -30,14 +30,13 @@ interface IProps {
 }
 
 const Header: React.FC<IProps> = ({ isDarkTheme, setTheme }) => {
-
-  const toggleTheme = () => {
-    setTheme(prev => !prev);
-  }
+  const toggleTheme: () => void = () => {
+    setTheme((prev) => !prev);
+  };
 
   return (
     <Wrapper>
-      <img className="logo" src={pen} alt='' width={36} />
+      <img className='logo' src={pen} alt='' width={36} />
       <motion.h1 variants={headingText} initial='hidden' animate='visible'>
         {line.split('').map((char, index) => (
           <motion.span key={index} variants={letter}>

@@ -5,10 +5,12 @@ export const Item = styled.div`
   margin: 20px auto;
   /* width: 100%; */
   max-width: 768px;
-  padding: 16px 0px;
+  padding: 16px 16px 16px 0px;
   border-radius: 1rem;
   color: #fff;
   transition: all 0.3s ease-out;
+  display: flex;
+  align-items: center;
   ${({ theme }) =>
     theme.name === 'DarkTheme'
       ? css`
@@ -34,6 +36,11 @@ export const Item = styled.div`
     padding: 0px 16px;
     display: flex;
     align-items: center;
+    cursor: pointer;
+  }
+
+  & img {
+    margin-left: auto;
     cursor: pointer;
   }
 `;

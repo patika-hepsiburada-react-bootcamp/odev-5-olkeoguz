@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
+import StatusBar from '../StatusBar/StatusBar';
 import { Wrapper } from './styles.todos';
 import TodoItem from './TodoItem/TodoItem';
 
@@ -18,6 +19,8 @@ const Todos = () => {
   ]);
 
   const [newTodo, setNewTodo] = useState<String>('');
+  const [todoFilter, setTodoFilter] = useState<String>('all');
+
   const addNewTodo: (e: React.FormEvent<HTMLFormElement>) => void = (e) => {
     e.preventDefault();
     if (newTodo.length) {
@@ -25,7 +28,7 @@ const Todos = () => {
         ...prev,
         { isDone: false, id: randomIdGenerator(), text: newTodo },
       ]);
-      setNewTodo("");
+      setNewTodo('');
     }
   };
 
@@ -36,8 +39,23 @@ const Todos = () => {
     setTodos(updatedTodos);
   };
 
+  const deleteTodo: (todoId: String) => void = (todoId) => {
+    setTodos((prev) => prev.filter((todo) => todo.id !== todoId));
+  };
+
+  const todosToShow = useMemo(() => {
+    if (todoFilter === 'active') {
+      return todos.filter((todo) => !todo.isDone);
+    } else if (todoFilter === 'completed') {
+      return todos.filter((todo) => todo.isDone);
+    } else {
+      return [...todos];
+    }
+  }, [todos, todoFilter]);
+
   return (
     <Wrapper>
+      <StatusBar todoFilter={todoFilter} setTodoFilter={setTodoFilter} />
       <form onSubmit={addNewTodo}>
         <input
           type='text'
@@ -47,12 +65,13 @@ const Todos = () => {
           autoFocus
         />
       </form>
-      <div className="todos-container">
-        {todos.map((todo) => (
+      <div className='todos-container'>
+        {todosToShow.map((todo) => (
           <TodoItem
             todo={todo}
             key={todo.id.toString()}
             changeTodo={() => toggleTodo(todo.id)}
+            deleteTodo={deleteTodo}
           />
         ))}
       </div>
