@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const Wrapper = styled.div`
   display: flex;
   align-items: center;
-  padding-left: 20px;
+  padding:8px 0px 0px 20px;
 
   & h1 {
     font-size: 32px;
@@ -14,5 +14,15 @@ export const Wrapper = styled.div`
     margin-left: auto;
     margin-right: 2rem;
     cursor: pointer;
+  }
+
+  @media(max-width: 768px) {
+   .logo{
+     display: none;
+   }
+
+   h1 {
+     font-size:24px;
+   }
   }
 `;

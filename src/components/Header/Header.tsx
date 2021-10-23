@@ -37,7 +37,7 @@ const Header: React.FC<IProps> = ({ isDarkTheme, setTheme }) => {
 
   return (
     <Wrapper>
-      <img src={pen} alt='' width={36} />
+      <img className="logo" src={pen} alt='' width={36} />
       <motion.h1 variants={headingText} initial='hidden' animate='visible'>
         {line.split('').map((char, index) => (
           <motion.span key={index} variants={letter}>

@@ -9,12 +9,10 @@ const App: React.FC = () => {
 
   return (
     <ThemeProvider theme={isDarkTheme ? DarkTheme : BaseTheme}>
-      <div className='App'>
         <Container>
           <Header isDarkTheme={isDarkTheme} setTheme={setIsDarkTheme} />
           <Todos />
         </Container>
-      </div>
     </ThemeProvider>
   );
 };

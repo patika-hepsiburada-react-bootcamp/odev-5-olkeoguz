@@ -13,16 +13,20 @@ const randomIdGenerator: () => String = () =>
 
 const Todos = () => {
   const [todos, setTodos] = useState<TodoType[]>([
-    { id: randomIdGenerator(), isDone: false, text: 'My first Todo' },
-    { id: randomIdGenerator(), isDone: true, text: 'My second Todo' },
+    { id: randomIdGenerator(), isDone: false, text: 'Finish your 5. homework' },
+    { id: randomIdGenerator(), isDone: true, text: 'Take your dog out' },
   ]);
 
   const [newTodo, setNewTodo] = useState<String>('');
-  const addNewTodo: () => void = () => {
-    setTodos((prev) => [
-      ...prev,
-      { isDone: false, id: randomIdGenerator(), text: newTodo },
-    ]);
+  const addNewTodo: (e: React.FormEvent<HTMLFormElement>) => void = (e) => {
+    e.preventDefault();
+    if (newTodo.length) {
+      setTodos((prev) => [
+        ...prev,
+        { isDone: false, id: randomIdGenerator(), text: newTodo },
+      ]);
+      setNewTodo("");
+    }
   };
 
   const toggleTodo: (todoId: String) => void = (todoId) => {
@@ -34,7 +38,16 @@ const Todos = () => {
 
   return (
     <Wrapper>
-      <div>
+      <form onSubmit={addNewTodo}>
+        <input
+          type='text'
+          placeholder='Enter your new todo'
+          value={newTodo.toString()}
+          onChange={(e) => setNewTodo(e.target.value)}
+          autoFocus
+        />
+      </form>
+      <div className="todos-container">
         {todos.map((todo) => (
           <TodoItem
             todo={todo}
@@ -42,15 +55,6 @@ const Todos = () => {
             changeTodo={() => toggleTodo(todo.id)}
           />
         ))}
-      </div>
-      <div>
-        <input
-          type='text'
-          placeholder='add new todo'
-          value={newTodo.toString()}
-          onChange={(e) => setNewTodo(e.target.value)}
-        />
-        <button onClick={addNewTodo}>Submit</button>
       </div>
     </Wrapper>
   );

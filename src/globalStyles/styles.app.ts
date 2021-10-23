@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const BaseTheme = {
   name: 'BaseTheme',
-  color: '#222',
+  color: '#0F0F15',
   background: '#fff',
 };
 
@@ -19,4 +19,5 @@ export const Container = styled.div`
   min-height: 100vh;
   transition: all 0.5s ease-in-out;
   overflow-x: hidden;
+  overflow-y: auto;
 `;
