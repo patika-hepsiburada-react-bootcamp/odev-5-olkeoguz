@@ -17,6 +17,12 @@ const animateTodo = {
       stiffness: 100,
     },
   },
+  hover: {
+    scale: 1.05,
+    transition:{
+      duration:0.2,
+    }
+  },
 };
 
 interface IProps {
@@ -27,7 +33,12 @@ interface IProps {
 
 const TodoItem: React.FC<IProps> = ({ todo, changeTodo, deleteTodo }) => {
   return (
-    <motion.div variants={animateTodo} initial='hidden' animate='visible'>
+    <motion.div
+      variants={animateTodo}
+      initial='hidden'
+      animate='visible'
+      whileHover='hover'
+    >
       <Item>
         <label>
           <input
