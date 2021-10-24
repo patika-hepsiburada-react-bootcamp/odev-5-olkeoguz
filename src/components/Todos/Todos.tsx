@@ -14,8 +14,8 @@ const randomIdGenerator: () => String = () =>
 
 const Todos = () => {
   const [todos, setTodos] = useState<TodoType[]>([
-    { id: randomIdGenerator(), isDone: false, text: 'Finish your 5. homework' },
-    { id: randomIdGenerator(), isDone: true, text: 'Take your dog out' },
+    { id: randomIdGenerator(), isDone: true, text: 'Finish your 5. homework' },
+    { id: randomIdGenerator(), isDone: false, text: 'Take your dog out' },
   ]);
 
   const [newTodo, setNewTodo] = useState<String>('');
@@ -66,6 +66,9 @@ const Todos = () => {
         />
       </form>
       <div className='todos-container'>
+        {!todosToShow.length && todoFilter === 'all' && (
+          <h3 className="empty-list-header"> So,you have nothing to do? </h3>
+        )}
         {todosToShow.map((todo) => (
           <TodoItem
             todo={todo}

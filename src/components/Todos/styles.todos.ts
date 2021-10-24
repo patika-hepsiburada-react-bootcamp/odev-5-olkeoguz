@@ -35,5 +35,10 @@ export const Wrapper = styled.div`
   .todos-container {
     width: 100%;
     height: 500px;
+
+    & .empty-list-header {
+      margin-top:2rem;
+      font-size:1.5rem;
+    }
   }
 `;
