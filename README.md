@@ -1,9 +1,6 @@
 # Oguz Olke - HW 5
 
-<a href="https://optimistic-chandrasekhar-ee5a3a.netlify.app/" target="_blank">
-<h2> Live</h2>
- </a>
-<br>
+<h1><a href="https://optimistic-chandrasekhar-ee5a3a.netlify.app/" target="_blank">Live</a> <h2>
 
 ## Todo list app built with
 
